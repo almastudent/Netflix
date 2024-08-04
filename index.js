@@ -15,12 +15,19 @@ dotenv.config({
 })
 const port = process.env.PORT || 4000;
 
-const allowedOrigins = 'https://66aff9bd42913a17c6a1daf0--genuine-kashata-72954c.netlify.app/';
+const allowedOrigins = ['https://genuine-kashata-72954c.netlify.app'];
 
-const corsOptions={
-    origin:allowedOrigins,
-    credentials:true
-}
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.includes(origin) || !origin) {
+            // Allow requests with no origin (like mobile apps or curl requests)
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
+};
 
 const app=express();
 app.use(express.urlencoded({extended:true}));
