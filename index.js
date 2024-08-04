@@ -15,7 +15,7 @@ dotenv.config({
 })
 
 const corsOptions={
-    origin:"http://localhost:3000",
+    origin:"https://netflix-bo4v.onrender.com",
     credentials:true
 }
 
