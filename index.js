@@ -13,7 +13,7 @@ dbConnection();
 dotenv.config({
     path:".env"
 })
-
+const port = process.env.PORT || 4000;
 const corsOptions={
     origin:"https://netflix-bo4v.onrender.com",
     credentials:true
@@ -33,7 +33,7 @@ res.send('helloooo')
 app.use(allUserRoutes)
 
 
-app.listen(process.env.PORT,()=>{
-    console.log(`server is live on port number ${process.env.PORT}`)
+app.listen(port,()=>{
+    console.log(`server is live on port number ${port}`)
 })
 
